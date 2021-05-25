@@ -2,10 +2,9 @@ Guided Stochastic Gradient Descent (GSGD)
 
 Copyright (c) 2018, Anuraganand Sharma - All rights reserved.
 
-This Matlab code is the implementation of GSGD proposed by Anuraganand Sharma in
-% the paper:
-A. Sharma, ìGuided Stochastic Gradient Descent Algorithm for inconsistent datasets,î 
-% Applied Soft Computing, vol. 73, pp. 1068ñ1080, Dec. 2018 
+This Matlab code is the implementation of GSGD proposed by Anuraganand Sharma in the paper:
+A. Sharma, ‚ÄúGuided Stochastic Gradient Descent Algorithm for inconsistent datasets,‚Äù 
+Applied Soft Computing, vol. 73, pp. 1068‚Äì1080, Dec. 2018 
 
 How to run:
 1 - The main program is written in GSGD.m. Run this program.
