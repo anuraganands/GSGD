@@ -292,7 +292,7 @@ for runs = 1:totalRun
                 
                 
                 if(min(size(eSGD)) ~= min(size(nErr)) ||  min(size(eSGD)) ~= 1 || min(size(nErr)) ~= 1)
-                    fprintf('nahi sake...\n');
+                    fprintf('Error! Not possible...\n');
                 end
 
                 %vector direction may be different but atleast getting lower
@@ -313,7 +313,7 @@ for runs = 1:totalRun
                         end 
                     end
                 catch
-                     fprintf('what is problem yeaar sake...\n');
+                     fprintf('Error!!\n');
                 end
                 
                 e = e+nErr;
