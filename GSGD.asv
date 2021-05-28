@@ -149,8 +149,7 @@ function GSGD
 
             NFC = NFC+1;
         end
- 
-        %% Plot section
+        
         if(mod(t,10)==0 || t == T)
             plotE = [plotE e]; 
             plotEgens = [plotEgens t];

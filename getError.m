@@ -3,15 +3,8 @@
 function e = getError(idx,x,y,W,type)
     e = 0;
     if(strcmp(type,'cross-entropy'))
-        for in = [idx] %take the full training sequence/data of this fold  
-            logits = W'*x(:,in); % W'(1xd) * x(dx1) = logits(1x1); %intermediate output is known as logits in machine learning
-%             D = -sign(logits)*D; %to cater large numbers 
-            D =max(ceil(log10(abs(logits))),1)-2;
-            if(D>=1)
-                logits = logits/10^D;
-            end
-            
-            e = e + log(1+exp(-y(in)*(logits)));   
+        for in = [idx] %take the full training sequence/data of this fold   
+            e = e + log(1+exp(-y(in)*W'*x(:,in)));   
         end                  
     elseif(strcmp(type,'softmax')) % W has d dimenstion (same as input) and NC possible outputs
         datasize = size(idx,2);        
