@@ -93,7 +93,6 @@ function GSGDv2
         [W, s, r, gradHist, Whistory, mAdam, vAdam] = ...
             SGDvariation(t, x(:,curIdx), y(curIdx), W, eta, activation, ...
             iAlgo, s, r, gradHist, Whistory, mAdam, vAdam);
-        eCurIdx = getError(curIdx,x,y,W,activation);
         NFC = NFC+1;
                    
         er = randperm(N);
@@ -121,14 +120,7 @@ function GSGDv2
 
             NFC = NFC+1;
         end
-        
-%         er = randperm(N);
-%         er = er(1:ceil(1.0*N)); %for verification apporximate error.
-%         ve = 0;
-%         for k = er
-%             ve = ve + getError(k,x,y,W,activation);
-%         end
-%         ve = ve/size(er,2);
+
         pe = ve;
         
         if mod(t,ropeTeamSz) == 0  || mod(t,tmpGuided) == 0
@@ -138,14 +130,9 @@ function GSGDv2
             [~,inconsistentIdx] = setdiff(idx(1:tmpGuided),idx(consistentIdx));
             tmpVals = idx(inconsistentIdx);
             idx(inconsistentIdx) = [];
-% %             idx = setdiff(idx, consistentIds); %remove these ones now for this epoch.
             idx = [idx tmpVals]; %hide inconsistent instances for a while
         end
-        
-        
-        
-        
-    
+            
         %% Plot section
         if(mod(t,10)==0 || t == T)
             plotE = [plotE ve]; 
