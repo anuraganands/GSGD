@@ -1,11 +1,11 @@
 % Guided Stochastic Gradient Descent (GSGD) 2.0
 % Code has been simplified
 % Copyright (c) 2018, Anuraganand Sharma - All rights reserved.
-% 
-% This is a simplified and more efficient Matlab code orignially proposed by Anuraganand Sharma in
+% GSGDv2: This is a simplified Matlab code orignially proposed by Anuraganand Sharma in
 % the paper:
 % A. Sharma, “Guided Stochastic Gradient Descent Algorithm for inconsistent datasets,” 
-% Applied Soft Computing, vol. 73, pp. 1068–1080, Dec. 2018 
+% Applied Soft Computing, vol. 73, pp. 1068–1080, Dec. 2018
+% The original version is GSGDv1.
 % Please do report any bugs you find. 
 
 function GSGDv2
