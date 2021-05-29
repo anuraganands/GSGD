@@ -1,32 +1,20 @@
 %%
-function [consistentIdx, inconsistentIdx] = extractConsistentInstances ...
-    (e, pe, omPlusScore, omPlusLevel, omMinuScore,...
-    omMinusLevel, t, T, ropeTeamSz, N, tmpGuided, idx)
-    noiseIdx = []; 
-    noiseScore = zeros(1,ropeTeamSz); % can range from 0-N in each sequence.
-    noiseLevel = zeros(1,ropeTeamSz); % still not clear whether to take average or Max. currently it is average.
+function [consistentIdx] = extractConsistentInstances ...
+    (avgE, pe, omPlusScore, omPlusLevel, omMinuScore,...
+    omMinusLevel)
+     
+    omMidx = find(omMinusLevel>0);
+    omPidx = find(omPlusLevel>0);
+    avgMscore = sum(omMinusLevel(omMidx))/size(omMidx,2);
+    avgPscore = sum(omPlusLevel(omPidx))/size(omPidx,2);
     
-    if(e<pe)%if good  
-        inw = 1;
-        noiseScore = noiseScore + omPlusScore*inw; %Few other points are bad
-        noiseLevel = noiseLevel + omPlusLevel*inw;
+    omMidx = find(omMinusLevel>avgMscore);
+    omPidx = find(omPlusLevel>avgPscore);
+        
+    if(avgE<pe)%if good  
+        consistentIdx = omMidx;
     else
-        %noise score update gives good results.
-        inw = 1;
-        noiseScore = noiseScore + omMinuScore*inw; %Few other points are bad
-        noiseLevel = noiseLevel + omMinusLevel*inw;
-        %curIdx is already catered above
+        consistentIdx = omPidx;% others may be good but because of the ith instances we are getting poor result. 
     end
-                    
-    threshold = getNoiseScoreThreshold(t, T, ropeTeamSz);
-    [noiseIdx, noiseScore, noiseLevel] = noiseSorting(noiseIdx, noiseScore, noiseLevel, ...
-        'S->L', threshold);
 
-    consistentIdx = [];
-    inconsistentIdx = [];
-
-    if(tmpGuided>0)
-        consistentIdx = idx(setdiff(1:tmpGuided,noiseIdx));
-        inconsistentIdx = idx(noiseIdx);
-    end
 end
