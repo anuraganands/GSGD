@@ -28,5 +28,4 @@ function [omPlusScore, omPlusLevel, omMinuScore, omMinusLevel, tmpGuided] = ...
             omMinusLevel(j) = omMinusLevel(j) + (pe-nErr);% presumably contributing ..om-
         end 
     end    
-  
 end
