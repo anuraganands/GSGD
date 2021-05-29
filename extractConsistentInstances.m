@@ -8,8 +8,8 @@ function [consistentIdx] = extractConsistentInstances ...
     avgMscore = sum(omMinusLevel(omMidx))/size(omMidx,2);
     avgPscore = sum(omPlusLevel(omPidx))/size(omPidx,2);
     
-    omMidx = find(omMinusLevel>avgMscore);
-    omPidx = find(omPlusLevel>avgPscore);
+    omMidx = find(omMinusLevel>0.5*avgMscore);
+    omPidx = find(omPlusLevel>0.5*avgPscore);
         
     if(avgE<pe)%if good  
         consistentIdx = omMidx;
