@@ -1,4 +1,4 @@
-% Guided Stochastic Gradient Descent (GSGD) 2.0
+% Guided Stochastic Gradient Descent (GSGD) Beta 2.0
 % Code has been simplified
 % Copyright (c) 2018, Anuraganand Sharma - All rights reserved.
 % GSGDv2: This is a simplified Matlab code orignially proposed by Anuraganand Sharma in
